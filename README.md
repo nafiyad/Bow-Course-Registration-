@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Bow Course Registration System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+The Bow Course Registration system is designed for the SD department, offering different
+programs and courses. The main goal is to create a web application where students can:
+1. View available programs and courses.
+2. Register for courses based on their selected program and term.
+3. Admins can manage courses and view student details.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+### Student Features:
+1. Dashboard: Displays information such as first name, student/admin status, student ID, department, and program.
+2. View Profile: Students can view their profile information.
+3. Term Selection: Before registering for courses, students must choose a term (Spring, Summer, Fall, or Winter).
+4. Course Registration: Students can register for 2-5 courses per term and can't register for the same course twice in the same term.
+5. Add/Remove Courses: Students can add or remove courses from their selection.
+6. Search Courses: Search for courses by name or course code.
+7. Submit a Contact Form: Students can send messages to the admin.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Administrator Features:
+1. Dashboard: Displays information such as first name, student/admin status.
+2. View Profile: Admins can view their profile information.
+3. Create Courses: Admins can create new courses by providing details such as course name, start/end dates, and more.
+4. Edit Courses: Admins can edit courses on the system.
+5. Delete Courses: Admins can remove courses from the system.
+6. Search Courses: Admins can search for courses by name or code.
+7. View Registered Students: Admins can see a list of students registered for each program.
+8. View Submitted Forms: Admins can read messages sent by students.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technology used
 
-### `npm test`
+- Frontend: React.js
+- UI Library: Material-UI
+- Routing: React Router
+- Styling: CSS-in-JS with Material-UI's 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup and Installation
 
-### `npm run build`
+1. Clone the repository:
+   ```
+   git clone https://github.com/nafiyad/Bow-Course-Registration-System.git
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Navigate to the project directory:
+   ```
+   cd Bow-Course-Registration-System
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Install dependencies:
+   ```
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Start the development server:
+   ```
+   npm start
+   ```
 
-### `npm run eject`
+5. Open your browser and visit `http://localhost:3000`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Repository
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

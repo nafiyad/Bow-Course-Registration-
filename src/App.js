@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { AppProvider } from './context/AppContext';
+import { UserProvider, useUserContext } from './context/UserContext';
+import AppRoutes from './AppRoutes';
 import './App.css';
+
+// Create a theme instance.
+const theme = createTheme();
+
+function AppContent() {
+  const { setCurrentUser } = useUserContext();
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('currentUser');
+    if (storedUser) {
+      setCurrentUser(JSON.parse(storedUser));
+    }
+  }, [setCurrentUser]);
+
+  return <AppRoutes />;
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <UserProvider>
+        <AppProvider>
+          <AppContent />
+        </AppProvider>
+      </UserProvider>
+    </ThemeProvider>
   );
 }
 
