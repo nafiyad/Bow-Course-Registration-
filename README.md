@@ -40,7 +40,7 @@ programs and courses. The main goal is to create a web application where student
 
 1. Clone the repository:
    ```
-   git clone https://github.com/nafiyad/Bow-Course-Registration-System.git
+   git clone https://github.com/nafiyad/Bow-Course-Registration.git
    ```
 
 2. Navigate to the project directory:
