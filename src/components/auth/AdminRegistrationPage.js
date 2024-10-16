@@ -28,9 +28,8 @@ function AdminRegistrationPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const result = registerAdmin(formData);
-    console.log('Admin registration result:', result); // Add this line for debugging
     if (result.success) {
-      alert(`Admin registered successfully! Your admin ID is: ${result.userId}`);
+      alert('Admin registered successfully!'); // Modified this line
       navigate('/login');
     } else {
       alert('Registration failed. Please try again.');

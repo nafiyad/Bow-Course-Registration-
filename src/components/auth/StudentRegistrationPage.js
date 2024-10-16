@@ -33,7 +33,7 @@ function StudentRegistrationPage() {
     e.preventDefault();
     const result = registerStudent(formData);
     if (result.success) {
-      alert(`Registration successful! Your student ID is: ${result.userId}`);
+      alert('Registration successful!');
       navigate('/login');
     } else {
       alert('Registration failed. Please try again.');

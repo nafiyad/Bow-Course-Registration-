@@ -38,16 +38,36 @@ export const UserProvider = ({ children }) => {
     localStorage.setItem('messages', JSON.stringify(messages));
   }, [messages]);
 
+  // Function to generate a sequential ID
+  const generateSequentialId = (role) => {
+    const prefix = role === 'admin' ? 'A' : 'S';
+    const existingIds = users
+      .filter(user => user.role === role)
+      .map(user => {
+        const id = user.id.toString();
+        if (id.startsWith(prefix)) {
+          return parseInt(id.slice(1), 10);
+        }
+        return 0;
+      })
+      .filter(id => !isNaN(id));
+
+    const maxId = existingIds.length > 0 ? Math.max(...existingIds) : 0;
+    return `${prefix}${(maxId + 1).toString().padStart(3, '0')}`;
+  };
+
   // Function to register a new user
   const registerUser = (userData, role) => {
+    const newId = generateSequentialId(role);
+    console.log(`Generated ID: ${newId}`); // For debugging
     const newUser = {
-      id: `${role === 'admin' ? 'A' : 'S'}${Date.now()}`,
+      id: newId,
       ...userData,
       role: role,
       registeredCourses: []
     };
     setUsers(prevUsers => [...prevUsers, newUser]);
-    return { success: true, message: `${role.charAt(0).toUpperCase() + role.slice(1)} registered successfully`, userId: newUser.id };
+    return { success: true, message: `${role.charAt(0).toUpperCase() + role.slice(1)} registered successfully` };
   };
 
   // Function to register an admin
