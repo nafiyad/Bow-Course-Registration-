@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useUserContext } from '../../context/UserContext';
 import {
   Typography,
@@ -23,9 +23,16 @@ import { AccountCircle, Send } from '@mui/icons-material';
 // It allows admins to view and reply to messages from students
 
 function MessageInbox() {
-  const { messages, users, sendMessage, markMessageAsRead } = useUserContext();
+  const { messages, users, sendMessage, markMessageAsRead, getUserMessages } = useUserContext();
   const [selectedMessage, setSelectedMessage] = useState(null);
   const [reply, setReply] = useState('');
+  const [adminMessages, setAdminMessages] = useState([]);
+
+  useEffect(() => {
+    // Fetch messages for admin
+    const fetchedMessages = getUserMessages('admin');
+    setAdminMessages(fetchedMessages);
+  }, [messages, getUserMessages]);
 
   // Open a message and mark it as read
   const handleOpenMessage = (message) => {
@@ -44,8 +51,13 @@ function MessageInbox() {
   // Send a reply to a message
   const handleSendReply = () => {
     if (reply.trim()) {
-      sendMessage('admin', selectedMessage.senderId, `Re: ${selectedMessage.subject}`, reply);
-      handleCloseMessage();
+      const result = sendMessage('admin', selectedMessage.senderId, `Re: ${selectedMessage.subject}`, reply);
+      console.log('Reply send result:', result); // Add this line for debugging
+      if (result.success) {
+        handleCloseMessage();
+      } else {
+        alert('Failed to send reply. Please try again.');
+      }
     }
   };
 
@@ -53,9 +65,9 @@ function MessageInbox() {
     <Box>
       <Typography variant="h5" gutterBottom>Message Inbox</Typography>
       <Paper elevation={3} sx={{ p: 2 }}>
-        {messages.length > 0 ? (
+        {adminMessages.length > 0 ? (
           <List>
-            {messages.map((message) => {
+            {adminMessages.map((message) => {
               const sender = users.find(u => u.id === message.senderId);
               return (
                 <React.Fragment key={message.id}>
