@@ -23,6 +23,7 @@ function ContactForm() {
     e.preventDefault();
     if (subject.trim() && content.trim()) {
       const result = sendMessage(currentUser.id, 'admin', subject, content);
+      console.log('Message send result:', result); // Add this line for debugging
       if (result.success) {
         setSubject('');
         setContent('');
